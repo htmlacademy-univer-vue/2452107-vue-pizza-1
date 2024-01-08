@@ -6,7 +6,9 @@
 
 <script setup>
 import { DATA_TRANSFER_PAYLOAD } from "@/common/data/constants.js";
+
 const emit = defineEmits(["drop"]);
+
 function onDrop({ dataTransfer }) {
   if (!dataTransfer) {
     return;
