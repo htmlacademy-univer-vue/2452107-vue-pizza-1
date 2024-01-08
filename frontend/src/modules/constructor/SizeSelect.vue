@@ -14,7 +14,7 @@
             type="radio"
             name="diameter"
             :value="size.id"
-			:checked="size.id === modelValue"
+            :checked="size.id === modelValue"
             @input="emit('update:modelValue', +$event.target.value)"
           />
           <span>{{ size.name }}</span>

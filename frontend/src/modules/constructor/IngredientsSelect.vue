@@ -43,7 +43,9 @@ watch(
     counts = newValue;
   }
 );
+
 const getClassName = (id) => "filling--" + products[id];
+
 let counts = reactive({});
 watch(counts, () => {
   emit("update:modelValue", counts);

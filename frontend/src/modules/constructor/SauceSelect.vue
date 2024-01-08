@@ -1,5 +1,5 @@
 <template>
-   <div class="ingredients__sauce">
+  <div class="ingredients__sauce">
     <p>Основной соус:</p>
 
     <label
@@ -22,6 +22,7 @@
 <script setup>
 import { defineProps } from "vue";
 const emit = defineEmits(["update:modelValue"]);
+
 defineProps({
   modelValue: {
     type: Number,

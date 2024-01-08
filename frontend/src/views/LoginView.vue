@@ -1,8 +1,8 @@
 <template>
   <div class="sign-form">
-    <a href="#" class="close close--white">
+    <router-link to="/" class="close close--white">
       <span class="visually-hidden">Закрыть форму авторизации</span>
-    </a>
+    </router-link>
     <div class="sign-form__title">
       <h1 class="title title--small">Авторизуйтесь на сайте</h1>
     </div>
@@ -27,25 +27,34 @@
 
 <style lang="scss">
 @import "@/assets/scss/app.scss";
+
 .sign-form {
   @include pf_center-all;
+
   z-index: 10;
+
   display: block;
+
   box-sizing: border-box;
   width: 455px;
   padding-top: 146px;
   padding-right: 32px;
   padding-bottom: 32px;
   padding-left: 32px;
+
   background: $white url("../assets/img/popup.svg") no-repeat center top;
   box-shadow: $shadow-light;
+
   &__title {
     margin-bottom: 24px;
+
     text-align: center;
   }
+
   &__input {
     margin-bottom: 16px;
   }
+
   button {
     margin: 0 auto;
     padding: 16px 14px;

@@ -76,20 +76,26 @@ const sum = computed(() => {
   const doughPrice = doughTypes.find(
     (dough) => dough.id === pizzaParams.dough
   ).price;
+
   const products = Object.entries(pizzaParams.products);
+
   let ingredientTotalPrice = 0;
   products.forEach((product) => {
     const price = getIngredientPrice(product[0]) * product[1];
+
     ingredientTotalPrice += price;
   });
+
   return multiplier * (saucePrice + doughPrice + ingredientTotalPrice);
 });
+
 const pizzaParams = reactive({
   dough: 1,
   size: 2,
   sauce: 2,
   products: reactive({}),
 });
+
 const dropped = (body) => {
   if (!pizzaParams.products[body.id]) {
     pizzaParams.products[body.id] = 1;

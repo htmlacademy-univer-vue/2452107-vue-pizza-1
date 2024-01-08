@@ -17,6 +17,7 @@ import { computed } from "vue";
 import sauces from "@/common/data/sauces.js";
 import doughSizes from "@/common/data/doughSizes.js";
 import ingredients from "@/common/data/ingredients.js";
+
 const props = defineProps({
   params: {
     type: Object,
@@ -26,6 +27,7 @@ const props = defineProps({
 const displayedIngredients = computed(() =>
   Object.entries(props.params.products)
 );
+
 const getPizzaClass = () =>
   `pizza pizza--foundation--${doughSizes[props.params.dough]}-${
     sauces[props.params.sauce]

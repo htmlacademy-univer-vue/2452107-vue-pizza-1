@@ -12,6 +12,7 @@
           <input
             class="visually-hidden"
             type="radio"
+            name="dought"
             :checked="modelValue === dough.id"
             :value="dough.id"
             @input="emit('update:modelValue', +$event.target.value)"
