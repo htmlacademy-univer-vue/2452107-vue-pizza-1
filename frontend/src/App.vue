@@ -1,15 +1,39 @@
 <template>
-  <div class="main__wrapper">
-    <div class="main__header">
-      <img src="@/assets/img/logo.svg" width="300" height="47" alt="V!U!E! Pizza" />
-    </div>
-    <h1>Добро пожаловать!</h1>
-    <p>
-      Это проект V!U!E! Pizza для обучения на профессиональном онлайн‑курсе<br />
-      <b>«Vue.js для опытных разработчиков».</b>
-    </p>
-  </div>
+  <router-view />
 </template>
+
+<script setup>
+import { getToken, removeToken } from "@/services/auth/auth.js";
+import { useAuthStore } from "@/store/useAuthStore.js";
+import { useCartStore } from "@/store/useCartStore.js";
+import { useCommonStore } from "@/store/useCommonStore.js";
+
+const token = getToken();
+
+const initInfo = async () => {
+  const cartStore = useCartStore();
+  const commonStore = useCommonStore();
+
+  const items = ["ingredients", "dough", "sauces", "sizes"];
+  items.forEach(async (item) => {
+    await commonStore.getItems(item);
+  });
+
+  await cartStore.getMiscs();
+
+  if (token) {
+    try {
+      const authStore = useAuthStore();
+      await authStore.setUserInfo();
+    } catch (e) {
+      removeToken();
+      console.log(e);
+    }
+  }
+};
+
+initInfo();
+</script>
 
 <style lang="scss">
 @import "@/assets/scss/app.scss";
@@ -58,5 +82,4 @@ body {
     margin: 0 auto;
   }
 }
-
 </style>
